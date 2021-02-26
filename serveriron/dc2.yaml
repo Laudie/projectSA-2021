@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dc2
+  labels:
+    app.kubernetes.io/part-of: factory
+    app: dc2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dc2
+  template:
+    metadata:
+      labels:
+        app: dc2
+    spec:
+      containers:
+      - name: dc2
+        image: fabgen5/server
+        ports:
+        - containerPort: 8080
